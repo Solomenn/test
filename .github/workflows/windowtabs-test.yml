@@ -19,9 +19,9 @@ jobs:
       - name: Test original build (no fix)
         shell: pwsh
         run: ./run-test.ps1 -Zip builds/original.zip -Label original -Harness "$PWD\harness-bin\harness.exe" -Out "$PWD\out"
-      - name: Test merged build 3 (with fix)
+      - name: Test merged build 4 (with fix)
         shell: pwsh
-        run: ./run-test.ps1 -Zip builds/merged3.zip -Label merged3 -Harness "$PWD\harness-bin\harness.exe" -Out "$PWD\out"
+        run: ./run-test.ps1 -Zip builds/merged4.zip -Label merged4 -Harness "$PWD\harness-bin\harness.exe" -Out "$PWD\out"
       - name: Summary
         if: always()
         shell: pwsh

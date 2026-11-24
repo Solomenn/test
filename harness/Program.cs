@@ -173,9 +173,12 @@ static class Program
         // 4. Another program stretches W-B (not in front), then W-B is brought to the front.
         var b = windows["W-B"];
         GetWindowRect(b, out rb);
-        SetWindowPos(b, IntPtr.Zero, rb.L, work.T, rb.W, work.H + 250, SWP_NOZORDER | SWP_NOACTIVATE); Thread.Sleep(3000);
+        SetWindowPos(b, IntPtr.Zero, rb.L, work.T, rb.W, work.H + 250, SWP_NOZORDER | SWP_NOACTIVATE); Thread.Sleep(6000);
+        CheckAll("back-window-stretched", work);
         Front(b); Thread.Sleep(6000);
-        CheckAll("back-window-stretched-then-shown", work);
+        var fg = new StringBuilder(256); GetWindowText(GetForegroundWindow(), fg, 256);
+        Log($"  front window now: {fg}");
+        CheckAll("back-window-shown", work);
 
         // 5. Maximize and restore once more with ordinary sizes.
         Front(a); Thread.Sleep(1000);

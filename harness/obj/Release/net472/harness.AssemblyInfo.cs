@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("harness")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+10334ba69704ed9770ebe7ced591427f1050e329")]
 [assembly: System.Reflection.AssemblyProductAttribute("harness")]
 [assembly: System.Reflection.AssemblyTitleAttribute("harness")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

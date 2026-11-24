@@ -7,3 +7,4 @@
 /home/claude/test/harness/obj/Release/net472/harness.csproj.CoreCompileInputs.cache
 /home/claude/test/harness/obj/Release/net472/harness.exe
 /home/claude/test/harness/obj/Release/net472/harness.pdb
+/home/claude/test/harness/obj/Release/net472/harness.sourcelink.json
