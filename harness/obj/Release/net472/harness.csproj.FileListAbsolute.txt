@@ -1,0 +1,9 @@
+/tmp/hb/harness.exe.config
+/tmp/hb/harness.exe
+/tmp/hb/harness.pdb
+/home/claude/test/harness/obj/Release/net472/harness.GeneratedMSBuildEditorConfig.editorconfig
+/home/claude/test/harness/obj/Release/net472/harness.AssemblyInfoInputs.cache
+/home/claude/test/harness/obj/Release/net472/harness.AssemblyInfo.cs
+/home/claude/test/harness/obj/Release/net472/harness.csproj.CoreCompileInputs.cache
+/home/claude/test/harness/obj/Release/net472/harness.exe
+/home/claude/test/harness/obj/Release/net472/harness.pdb

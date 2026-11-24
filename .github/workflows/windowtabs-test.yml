@@ -1,0 +1,35 @@
+name: WindowTabs taskbar test
+on:
+  push:
+  workflow_dispatch:
+jobs:
+  test:
+    runs-on: windows-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build harness
+        run: dotnet build harness/harness.csproj -c Release -o harness-bin
+      - name: Display
+        shell: pwsh
+        run: |
+          Add-Type -AssemblyName System.Windows.Forms
+          [System.Windows.Forms.Screen]::AllScreens | ForEach-Object { "$($_.DeviceName) bounds=$($_.Bounds) work=$($_.WorkingArea)" }
+          Get-Process explorer -ErrorAction SilentlyContinue | Select-Object Id, SessionId
+      - name: Test original build (no fix)
+        shell: pwsh
+        run: ./run-test.ps1 -Zip builds/original.zip -Label original -Harness "$PWD\harness-bin\harness.exe" -Out "$PWD\out"
+      - name: Test merged build 3 (with fix)
+        shell: pwsh
+        run: ./run-test.ps1 -Zip builds/merged3.zip -Label merged3 -Harness "$PWD\harness-bin\harness.exe" -Out "$PWD\out"
+      - name: Summary
+        if: always()
+        shell: pwsh
+        run: |
+          "## Results" >> $env:GITHUB_STEP_SUMMARY
+          Get-ChildItem out -Filter 'results-*.txt' | ForEach-Object { "### $($_.Name)" >> $env:GITHUB_STEP_SUMMARY; '```' >> $env:GITHUB_STEP_SUMMARY; Get-Content $_.FullName | Select-String 'RESULT|display|->' | ForEach-Object { $_.Line >> $env:GITHUB_STEP_SUMMARY }; '```' >> $env:GITHUB_STEP_SUMMARY }
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: windowtabs-test-results
+          path: out
